@@ -1,0 +1,15 @@
+<div class="content" id="app-pembelian">
+    <input type="hidden" id="id" value="<%= locals.id ? id : '' %>">
+
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control required" id="nama" error="Nama" placeholder="Nama" value="<%= locals.nama ? nama : '' %>">
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control required" id="nim" error="Nim" placeholder="Nim" error="Nim" value="<%= locals.id ? id : '' %>">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-success" @click="proses">Proses</button>
+        </div>
+    </div>
+</div>

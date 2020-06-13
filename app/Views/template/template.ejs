@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('head'); %>
+
+    <body>
+        <div class="wrapper">
+            <%- include('../'+views); %>
+        </div>
+    </body>
+
+</html>
+
+<% asset.forEach(function(ast){ %>
+    <%- ast %>
+<% }); %>
+
+<style>
+    .wrapper {
+        padding: 32px;
+    }
+</style>

@@ -1,0 +1,90 @@
+<% offset = typeof offset === 'undefined' ? 0 : offset %>
+
+<div class="content" id="app-pembelian">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" id="btn-tampilkan" @click="tampilkan">
+        TAMPILKAN
+      </button> &nbsp;
+            <button class="btn btn-success" id="btn-add" @click="add">TAMBAH</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th class="text-center">NO</th>
+                            <th class="text-center">NAMA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(result.length > 0){ %>
+                            <% no = parseInt(last_page); %>
+                                <% for(item in result){%>
+                                    <tr>
+                                        <td>
+                                            <%= no++ %>
+                                        </td>
+                                        <td>
+                                            <%= result[item].nama %>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                        <% }else{ %>
+                            <tr>
+                                <td colspan="2">Tidak ada data ditemukan</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <% if(typeof display != 'undefined'){  %>
+                <div class="record text-right">
+                    <% if(typeof offset != 'undefined'){  %>
+                        <p>
+                            Menampilkan <b><%= parseInt(offset)+1 %> </b> <b><%= parseInt(display) > parseInt(from_data) ? `- ${parseInt(display)-1}` : " - "+display %> </b> dari
+                            <b><%= from_data %></b> data
+                        </p>
+                    <% }%>                    
+                </div>
+            <% }  %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="pagination">
+                <%- pagination %>
+            </ul>
+        </div>
+    </div>
+
+    <!--UNTUK PAGINATION WITH NUMBER-->
+    <div class="row hide">
+        <div class="col-md-12">
+            <div class="data-pagination text-right">
+                <ul class="pagination">
+                    <li class=""><a href="<%= pagination[0].link %>">FIRST</a></li>
+                    <!-- <li class=""><a href="#">PREV</a></li> -->
+                    <% for(pg in pagination){  %>
+                        <% var hide = pagination[pg].segment ? '' : 'hide' %>
+                        <li class="<%= pagination[pg].active %> <%= hide %>">
+                            <a href="<%= pagination[pg].link %>" segment="<%= pagination[pg].segment %>">
+                                <%= pagination[pg].no %>
+                            </a>
+                        </li>
+                    <% } %>
+                    <!-- <li class=""><a href="#">NEXT</a></li> -->
+                    <li class=""><a href="<%= pagination[pagination.length - 1].link %>">LAST</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
