@@ -66,10 +66,10 @@ App.control.post(route.pembelian.simpan, async function(req, res) {
     result.is_valid = false;
 
     var data = await mdbPembelian.prosesSimpan(req.body);
-    // if(data.affectedRows > 0){
-    //     result.is_valid = true;
-    //     result.id = data.insertId;
-    // }
+    if(data.affectedRows > 0){
+        result.is_valid = true;
+        result.id = data.insertId;
+    }
 
     res.json(result);
 });
