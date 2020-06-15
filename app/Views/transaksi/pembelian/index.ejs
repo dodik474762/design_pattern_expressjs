@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered">
                     <thead>
                         <tr class="bg-primary">
                             <th class="text-center">NO</th>
@@ -27,7 +27,7 @@
                         <% if(result.length > 0){ %>
                             <% no = parseInt(last_page); %>
                                 <% for(item in result){%>
-                                    <tr>
+                                    <tr class="hover-tr" @click="ubah" data_id="<%= result[item].id %>" >
                                         <td>
                                             <%= no++ %>
                                         </td>
@@ -88,3 +88,11 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    .hover-tr:hover{
+        background-color: aqua;    
+        cursor: pointer;
+    }
+</style>

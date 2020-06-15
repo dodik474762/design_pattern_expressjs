@@ -93,7 +93,7 @@ var Pembelian = {
                 var data = Pembelian.getPostInputData(params);
                 var query = record.set().tableName("customer").insert(data).execute();
                 if (params.id != '') {
-                    query = record.set().tableName('customer').update(data, "id = " + params.id).execute();
+                    query = record.set().tableName('customer').update(data).where("id", "=", params.id).execute();
                 }
 
                 console.log('masukk query');

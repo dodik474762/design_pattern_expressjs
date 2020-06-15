@@ -69,7 +69,7 @@ var ActiveRecord = {
         var setField = ActiveRecord.getSetField(params);
         this.query = `UPDATE ${this.table_name} set ${setField} `;
         // return this.query;
-        // return ActiveRecord;
+        return ActiveRecord;
     },
 
     getAll: function() {
